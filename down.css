@@ -1,0 +1,601 @@
+#app {
+    font-family:Avenir,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    color:#2c3e50;
+}
+.container{
+    padding:0;
+}
+*,body,figure {
+    padding:0;
+    margin:0
+}
+ol,ul {
+    list-style-type:none
+}
+.inner-image {
+    display:block;
+    -o-object-fit:cover;
+    object-fit:cover;
+    width:inherit;
+    height:inherit
+}
+@media screen and (min-width:320px) {
+    html {
+        font-size:14px
+    }
+}@media screen and (min-width:360px) {
+    html {
+        font-size:16px
+    }
+}@media screen and (min-width:400px) {
+    html {
+        font-size:18px
+    }
+}@media screen and (min-width:440px) {
+    html {
+        font-size:20px
+    }
+}@media screen and (min-width:480px) {
+    html {
+        font-size:22px
+    }
+}@media screen and (min-width:640px) {
+    html {
+        font-size:28px
+    }
+}
+
+.base-info {
+    padding: 1.25rem 1.45rem;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+.base-info .base-info-l {
+    border-radius: .8rem;
+    overflow: hidden;
+    width: 6.5rem;
+    height: 6.5rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.base-info .base-info-l>img {
+    width: 100%;
+    height: 100%;
+}
+.base-info .base-info-r {
+    position: relative;
+    margin-left: 1.2rem;
+    flex: 1;
+}
+.base-info .base-info-r .title {
+    margin-top: .35rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+.base-info .base-info-r .category, .base-info .base-info-r .title {
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 1.5rem;
+}
+.base-info .base-info-r .category {
+    color: #999;
+    font-size: 1rem;
+}
+.base-info .base-info-r .install-btn {
+    display: inline-block;
+    height: 1.6rem;
+    width: 6.5rem;
+    border-radius: .8rem;
+    background: #0477f9;
+    border: 1px solid #0477f9;
+    text-align: center;
+    color: #fff;
+    font-size: .85rem;
+    bottom: .35rem;
+    left: 0;
+    line-height: 1.5rem;
+}
+
+.base-info .base-info-r .install-btn.disabled {
+    background: #a4c6ec;
+}
+
+.base-info .base-info-r .loading {
+    height: 18px;
+    margin-right: 4px;
+    vertical-align: -3px;
+}
+
+.base-info .base-info-r .install-btn:hover {
+    text-decoration: none;
+}
+
+.base-info .base-info-r .clr {
+    margin-top: 1.8em;
+}
+
+.base-info .base-info-r .arouse {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(6,122,254,1);
+}
+
+.base-info .base-info-r .arouse b {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin: -2px 5px 0 0;
+    text-align: center;
+    background: rgba(6,122,254,1);
+    color: #fff;
+    border-radius: 100%;
+}
+
+.rate-info {
+    /*padding-bottom: 1.25rem;*/
+    margin: 0 1.45rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.rate-info .rate>strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #888;
+}
+.rate-info .rate>img {
+    width: 5rem;
+    margin-left: 5px;
+}
+.rate-info .rate>p {
+    color: #d8d8d8;
+    font-size: .75rem;
+}
+.rate-info .classification>strong {
+    color: #8e8f92;
+    font-size: 1rem;
+}
+.rate-info .classification>p {
+    color: #d8d8d8;
+    font-size: .75rem;
+}
+.comment-info {
+    border-top: 1px solid #eee;
+    padding: 1.25rem 0;
+    margin: 0 1.45rem;
+}
+.comment-info .comment-info-title {
+    margin-bottom: .85rem;
+    font-size: 1.25rem;
+    font-weight: bolder;
+}
+.comment-info .comment-info-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+.comment-info .comment-info-content .comment-info-l>strong {
+    font-size: 3.75rem;
+    line-height: 2.6875rem;
+    color: #4a4a4e;
+    font-weight: 700;
+}
+.comment-info .comment-info-content .comment-info-l>p {
+    width: 5.6875rem;
+    text-align: center;
+    color: #7b7b7b;
+    margin-top: .625rem;
+}
+.comment-info .comment-info-content .comment-info-r {
+    margin-left: 2rem;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.comment-info .comment-info-content .comment-info-r .comment-star-list>li {
+    margin-top: .3rem;
+    line-height: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.comment-info .comment-info-content .comment-info-r .comment-star-list .comment-star {
+    position: relative;
+    width: 2.875rem;
+    height: .4375rem;
+}
+.comment-info .comment-info-content .comment-info-r .comment-star-list .comment-star>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.comment-info .comment-info-content .comment-info-r .comment-star-list .comment-star>div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #fff;
+}
+.comment-info .comment-info-content .comment-info-r .comment-star-list .comment-progress {
+    position: relative;
+    margin-left: .5rem;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    height: .125rem;
+    background: #e9e9ec;
+    border-radius: .125rem;
+}
+.comment-info .comment-info-content .comment-info-r .comment-star-list .comment-progress>div {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: .125rem;
+    background: #4a4a4e;
+    border-radius: .125rem;
+    width: 90%;
+}
+.app-info {
+    border-top: 1px solid #eee;
+    padding: 1.25rem 0;
+    margin: 0 1.45rem;
+}
+.app-info .app-title {
+    margin-bottom: .5rem;
+    font-size: 1.25rem;
+    font-weight: bolder;
+}
+.app-info .app-info-con {
+    position: relative;
+    font-size: .875rem;
+}
+.information-info{
+    border-top: 1px solid #eee;
+    padding: 1.25rem 0;
+    margin: 0 1.45rem;
+}
+.information-info .app-title {
+    margin-bottom: .5rem;
+    font-size: 1.25rem;
+    font-weight: bolder;
+}
+.information-info .information-list {
+    padding: 0;
+}
+.information-info .information-list>li {
+    font-size: .75rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    line-height: 3.5;
+    border-bottom: 1px solid #f2f2f2;
+}
+.information-info .information-list>li .l {
+    color: #737379;
+}
+.information-info .information-list>li .r {
+    margin-left: 1.5rem;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: right;
+    line-height: 1rem;
+}
+.disclaimer {
+    padding: 10px;
+    color: rgba(153, 153, 153, 1);
+    background: rgba(249, 249, 249, 1);
+}
+
+/*
+ * 微信遮罩
+ */
+.wechat-mask {
+    z-index: 2;
+    position: relative;
+    display: block;
+}
+
+.wechat-mask .mask-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .2);
+}
+
+.wechat-mask .mask-pop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 300px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.wechat-mask .mask-colsed {
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 20px;
+}
+
+.wechat-mask .mask-colsed img {
+    display: block;
+    width: 100%;
+}
+.wechat-mask .copy-url-img {
+    display: block;
+    width: 100%;
+}
+
+.wechat-mask .copy-url {
+    position: relative;
+    margin: 20px 30px;
+    height: 36px;
+    line-height: 36px;
+    background: #F1F6F9;
+    border-radius: 18px;
+    overflow: hidden;
+}
+.wechat-mask button, .wechat-mask input {
+    border: none;
+    background: none;
+    outline: 0;
+}
+
+.wechat-mask .copy-url input {
+    padding-left: 20px;
+    color: #9A9A99;
+}
+
+.wechat-mask .copy-url button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 15px;
+    height: 36px;
+    line-height: 36px;
+    background: linear-gradient(90deg, rgba(34, 125, 249, 1), rgba(0, 203, 250, 1));
+    color: #fff;
+    border-radius: 0 18px 18px 0;
+}
+
+.pc-box {
+    display: none;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+.pc-logo {
+    width: 160px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px auto 0;
+}
+.pc-logo img {
+    display: block;
+    width: 100%;
+}
+.pc-box > p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+.pc-box .code {
+    margin: 10px auto 10px;
+    width: 200px;
+    height: 200px;
+}
+.pc-box .info {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pc-box .pc-colsed {
+    z-index: 2;
+    position: absolute;
+    right: 20px;
+    width: 30px;
+}
+
+.pc-box .pc-colsed img {
+    display: block;
+    width: 100%;
+}
+
+/* 轮播图 */
+.app-slider {
+    margin-top: .3rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+}
+.app-slider .swiper-slide {
+    margin-right: .2rem;
+    padding-bottom: .75em;
+    width: calc(100% - 1rem)
+}
+.app-slider .swiper-slide img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: .16rem
+}
+
+/* 遮罩 */
+.mask-box {
+    z-index: 2;
+    position: relative;
+}
+
+.mask-colsed {
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 20px;
+}
+
+.mask-colsed img {
+    display: block;
+    width: 100%;
+}
+
+.mask-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .2)
+}
+
+.mask-pop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 300px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* swiper */
+.mask-pop .swiper-container {
+    width: 100%;
+}
+.mask-pop .swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+.mask-pop .swiper-slide p {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #0491F7;
+}
+
+.mask-pop .swiper-container .swiper-pagination {
+    position: static;
+}
+
+.mask-pop .swiper-pagination-bullet {
+    background: #DBF0FD;
+    opacity: 1;
+}
+
+.mask-pop .swiper-pagination-bullet-active {
+    background: #0491F7;
+
+}
+
+/*  */
+.file-info {
+    display: block;
+    margin: 30px 0 20px;
+    font-size: 14px;
+    color: #00B0F9;
+    text-align: center;
+
+}
+
+.file-box {
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    width: 70%;
+    max-width: 300px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 20px;
+
+}
+
+.file-box h3 {
+    text-align: center;
+    font-size: 16px;
+    color: #3A3A3A;
+
+}
+
+.file-box .colsed-btn {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: 40px;
+    line-height: 40px;
+    background: linear-gradient(90deg, rgba(32, 124, 249, 1), rgba(0, 205, 250, 1));
+    border-radius: 20px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+}
+
+.file-con {
+    margin: 20px 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.file-con strong {
+    display: block;
+    margin-top: 20px;
+    color: #333;
+}
+
+.file-con p {
+    margin-top: 8px;
+}

@@ -1,49 +1,2249 @@
-<!DOCTYPE html>
-<html>
+<html lang="zh" class="">
 	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="chat.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>eval(function(a){a=unescape(a);var c=String.fromCharCode(a.charCodeAt(0)-a.length);for(var i=1;i<a.length;i++){c+=String.fromCharCode(a.charCodeAt(i)-c.charCodeAt(i-1))}return c}("%u0135%DB%E3%D1%D7%DD%D8%DD%8E%92%D7%CB%D8%D7%D8%DB%90Q%A4%85%7F%E7%DE%8C%5D%5D%8C%DB%D2%C4%D5%DD%D8%DD%9C%96%DA%D7%CB%A1Em%D2%DD%E1%E2%DB%D1%93%9A%DB%D6%8F%9D%E7%DE%95dE%80%D7%D3%92%8F%DD%D1%C8%85%5D%5D%95%E7%DE%9A%A1%E3%DC%D5%DD%9CJEEKdEs%CF%86H%97%DD%D1%C8%C0%8C%8E%7DA%5E%5DQZI%9B%85%7F%E7%DE%8CKh%5DBETS%5DE%7D%D8%D1%D2%94%9A%DB%D2%C4%D5%DD%D8%DD%9C%A0%D7%D5%DC%CD%C4%C8%8D%9D%E7%DE%95dE%81%E0%D7%D2%D3%E6%A5%9A%DB%D2%C4%D5%DD%D8%DD%9C%A0%D7%D1%DB%D0%C5%8CQdE%87%87%87%87%7D%D8%D9%C8%BD%D6%D2%D4%E4%E9%9CO%99%D7%CB%D8%D7%D8%DB%90QPSLQa%60%60Yd"));</script>     
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+		<title>
+			太空人
+		</title>
+		<link rel="icon" href="167x167bb.png" type="image/x-icon">
+		<link rel="shortcut icon" href="167x167bb.png" type="image/x-icon">
+		<script src="jquery.min.js"></script>
+
+		<script src="sweetalert2.all.js"></script>
 		<style>
-			.body {
-				background-color: #3d91ff;
-				margin: 0;
+			.swal2-popup.swal2-toast {
+				flex-direction: row;
+				align-items: center;
+				width: auto;
+				padding: .625em;
+				overflow-y: hidden;
+				background: #fff;
+				box-shadow: 0 0 .625em #d9d9d9
+			}
+
+			.swal2-popup.swal2-toast .swal2-header {
+				flex-direction: row;
+				padding: 0
+			}
+
+			.swal2-popup.swal2-toast .swal2-title {
+				flex-grow: 1;
+				justify-content: flex-start;
+				margin: 0 .6em;
+				font-size: 1em
+			}
+
+			.swal2-popup.swal2-toast .swal2-footer {
+				margin: .5em 0 0;
+				padding: .5em 0 0;
+				font-size: .8em
+			}
+
+			.swal2-popup.swal2-toast .swal2-close {
+				position: static;
+				width: .8em;
+				height: .8em;
+				line-height: .8
+			}
+
+			.swal2-popup.swal2-toast .swal2-content {
+				justify-content: flex-start;
 				padding: 0;
+				font-size: 1em
 			}
-			.table{
-				position: relative;
+
+			.swal2-popup.swal2-toast .swal2-icon {
+				width: 2em;
+				min-width: 2em;
+				height: 2em;
+				margin: 0
 			}
-			.div-img1{
+
+			.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content {
+				display: flex;
+				align-items: center;
+				font-size: 1.8em;
+				font-weight: 700
+			}
+
+			@media all and (-ms-high-contrast:none),
+			(-ms-high-contrast:active) {
+				.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content {
+					font-size: .25em
+				}
+			}
+
+			.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
+				width: 2em;
+				height: 2em
+			}
+
+			.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+				top: .875em;
+				width: 1.375em
+			}
+
+			.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+				left: .3125em
+			}
+
+			.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+				right: .3125em
+			}
+
+			.swal2-popup.swal2-toast .swal2-actions {
+				flex-basis: auto !important;
+				width: auto;
+				height: auto;
+				margin: 0 .3125em
+			}
+
+			.swal2-popup.swal2-toast .swal2-styled {
+				margin: 0 .3125em;
+				padding: .3125em .625em;
+				font-size: 1em
+			}
+
+			.swal2-popup.swal2-toast .swal2-styled:focus {
+				box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(50, 100, 150, .4)
+			}
+
+			.swal2-popup.swal2-toast .swal2-success {
+				border-color: #a5dc86
+			}
+
+			.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line] {
+				position: absolute;
+				width: 1.6em;
+				height: 3em;
+				transform: rotate(45deg);
+				border-radius: 50%
+			}
+
+			.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left] {
+				top: -.8em;
+				left: -.5em;
+				transform: rotate(-45deg);
+				transform-origin: 2em 2em;
+				border-radius: 4em 0 0 4em
+			}
+
+			.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right] {
+				top: -.25em;
+				left: .9375em;
+				transform-origin: 0 1.5em;
+				border-radius: 0 4em 4em 0
+			}
+
+			.swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
+				width: 2em;
+				height: 2em
+			}
+
+			.swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
+				top: 0;
+				left: .4375em;
+				width: .4375em;
+				height: 2.6875em
+			}
+
+			.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line] {
+				height: .3125em
+			}
+
+			.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip] {
+				top: 1.125em;
+				left: .1875em;
+				width: .75em
+			}
+
+			.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long] {
+				top: .9375em;
+				right: .1875em;
+				width: 1.375em
+			}
+
+			.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip {
+				-webkit-animation: swal2-toast-animate-success-line-tip .75s;
+				animation: swal2-toast-animate-success-line-tip .75s
+			}
+
+			.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long {
+				-webkit-animation: swal2-toast-animate-success-line-long .75s;
+				animation: swal2-toast-animate-success-line-long .75s
+			}
+
+			.swal2-popup.swal2-toast.swal2-show {
+				-webkit-animation: swal2-toast-show .5s;
+				animation: swal2-toast-show .5s
+			}
+
+			.swal2-popup.swal2-toast.swal2-hide {
+				-webkit-animation: swal2-toast-hide .1s forwards;
+				animation: swal2-toast-hide .1s forwards
+			}
+
+			.swal2-container {
+				display: flex;
+				position: fixed;
+				z-index: 1060;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				padding: .625em;
+				overflow-x: hidden;
+				transition: background-color .1s;
+				-webkit-overflow-scrolling: touch
+			}
+
+			.swal2-container.swal2-backdrop-show,
+			.swal2-container.swal2-noanimation {
+				background: rgba(0, 0, 0, .4)
+			}
+
+			.swal2-container.swal2-backdrop-hide {
+				background: 0 0 !important
+			}
+
+			.swal2-container.swal2-top {
+				align-items: flex-start
+			}
+
+			.swal2-container.swal2-top-left,
+			.swal2-container.swal2-top-start {
+				align-items: flex-start;
+				justify-content: flex-start
+			}
+
+			.swal2-container.swal2-top-end,
+			.swal2-container.swal2-top-right {
+				align-items: flex-start;
+				justify-content: flex-end
+			}
+
+			.swal2-container.swal2-center {
+				align-items: center
+			}
+
+			.swal2-container.swal2-center-left,
+			.swal2-container.swal2-center-start {
+				align-items: center;
+				justify-content: flex-start
+			}
+
+			.swal2-container.swal2-center-end,
+			.swal2-container.swal2-center-right {
+				align-items: center;
+				justify-content: flex-end
+			}
+
+			.swal2-container.swal2-bottom {
+				align-items: flex-end
+			}
+
+			.swal2-container.swal2-bottom-left,
+			.swal2-container.swal2-bottom-start {
+				align-items: flex-end;
+				justify-content: flex-start
+			}
+
+			.swal2-container.swal2-bottom-end,
+			.swal2-container.swal2-bottom-right {
+				align-items: flex-end;
+				justify-content: flex-end
+			}
+
+			.swal2-container.swal2-bottom-end>:first-child,
+			.swal2-container.swal2-bottom-left>:first-child,
+			.swal2-container.swal2-bottom-right>:first-child,
+			.swal2-container.swal2-bottom-start>:first-child,
+			.swal2-container.swal2-bottom>:first-child {
+				margin-top: auto
+			}
+
+			.swal2-container.swal2-grow-fullscreen>.swal2-modal {
+				display: flex !important;
+				flex: 1;
+				align-self: stretch;
+				justify-content: center
+			}
+
+			.swal2-container.swal2-grow-row>.swal2-modal {
+				display: flex !important;
+				flex: 1;
+				align-content: center;
+				justify-content: center
+			}
+
+			.swal2-container.swal2-grow-column {
+				flex: 1;
+				flex-direction: column
+			}
+
+			.swal2-container.swal2-grow-column.swal2-bottom,
+			.swal2-container.swal2-grow-column.swal2-center,
+			.swal2-container.swal2-grow-column.swal2-top {
+				align-items: center
+			}
+
+			.swal2-container.swal2-grow-column.swal2-bottom-left,
+			.swal2-container.swal2-grow-column.swal2-bottom-start,
+			.swal2-container.swal2-grow-column.swal2-center-left,
+			.swal2-container.swal2-grow-column.swal2-center-start,
+			.swal2-container.swal2-grow-column.swal2-top-left,
+			.swal2-container.swal2-grow-column.swal2-top-start {
+				align-items: flex-start
+			}
+
+			.swal2-container.swal2-grow-column.swal2-bottom-end,
+			.swal2-container.swal2-grow-column.swal2-bottom-right,
+			.swal2-container.swal2-grow-column.swal2-center-end,
+			.swal2-container.swal2-grow-column.swal2-center-right,
+			.swal2-container.swal2-grow-column.swal2-top-end,
+			.swal2-container.swal2-grow-column.swal2-top-right {
+				align-items: flex-end
+			}
+
+			.swal2-container.swal2-grow-column>.swal2-modal {
+				display: flex !important;
+				flex: 1;
+				align-content: center;
+				justify-content: center
+			}
+
+			.swal2-container.swal2-no-transition {
+				transition: none !important
+			}
+
+			.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal {
+				margin: auto
+			}
+
+			@media all and (-ms-high-contrast:none),
+			(-ms-high-contrast:active) {
+				.swal2-container .swal2-modal {
+					margin: 0 !important
+				}
+			}
+
+			.swal2-popup {
+				display: none;
 				position: relative;
+				box-sizing: border-box;
+				flex-direction: column;
+				justify-content: center;
+				width: 32em;
+				max-width: 100%;
+				padding: 1.25em;
+				border: none;
+				border-radius: .3125em;
+				background: #fff;
+				font-family: inherit;
+				font-size: 1rem
+			}
+
+			.swal2-popup:focus {
+				outline: 0
+			}
+
+			.swal2-popup.swal2-loading {
+				overflow-y: hidden
+			}
+
+			.swal2-header {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 0 1.8em
+			}
+
+			.swal2-title {
+				position: relative;
+				max-width: 100%;
+				margin: 0 0 .4em;
+				padding: 0;
+				color: #595959;
+				font-size: 1.875em;
+				font-weight: 600;
+				text-align: center;
+				text-transform: none;
+				word-wrap: break-word
+			}
+
+			.swal2-actions {
+				display: flex;
+				z-index: 1;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				margin: 1.25em auto 0
+			}
+
+			.swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {
+				opacity: .4
+			}
+
+			.swal2-actions:not(.swal2-loading) .swal2-styled:hover {
+				background-image: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1))
+			}
+
+			.swal2-actions:not(.swal2-loading) .swal2-styled:active {
+				background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2))
+			}
+
+			.swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
+				box-sizing: border-box;
+				width: 2.5em;
+				height: 2.5em;
+				margin: .46875em;
+				padding: 0;
+				-webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+				animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+				border: .25em solid transparent;
+				border-radius: 100%;
+				border-color: transparent;
+				background-color: transparent !important;
+				color: transparent !important;
+				cursor: default;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+
+			.swal2-actions.swal2-loading .swal2-styled.swal2-cancel {
+				margin-right: 30px;
+				margin-left: 30px
+			}
+
+			.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after {
+				content: "";
+				display: inline-block;
+				width: 15px;
+				height: 15px;
+				margin-left: 5px;
+				-webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+				animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+				border: 3px solid #999;
+				border-radius: 50%;
+				border-right-color: transparent;
+				box-shadow: 1px 1px 1px #fff
+			}
+
+			.swal2-styled {
+				margin: .3125em;
+				padding: .625em 2em;
+				box-shadow: none;
+				font-weight: 500
+			}
+
+			.swal2-styled:not([disabled]) {
+				cursor: pointer
+			}
+
+			.swal2-styled.swal2-confirm {
+				border: 0;
+				border-radius: .25em;
+				background: initial;
+				background-color: #3085d6;
+				color: #fff;
+				font-size: 1.0625em
+			}
+
+			.swal2-styled.swal2-cancel {
+				border: 0;
+				border-radius: .25em;
+				background: initial;
+				background-color: #aaa;
+				color: #fff;
+				font-size: 1.0625em
+			}
+
+			.swal2-styled:focus {
+				outline: 0;
+				box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(50, 100, 150, .4)
+			}
+
+			.swal2-styled::-moz-focus-inner {
+				border: 0
+			}
+
+			.swal2-footer {
+				justify-content: center;
+				margin: 1.25em 0 0;
+				padding: 1em 0 0;
+				border-top: 1px solid #eee;
+				color: #545454;
+				font-size: 1em
+			}
+
+			.swal2-timer-progress-bar-container {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				height: .25em;
+				overflow: hidden;
+				border-bottom-right-radius: .3125em;
+				border-bottom-left-radius: .3125em
+			}
+
+			.swal2-timer-progress-bar {
+				width: 100%;
+				height: .25em;
+				background: rgba(0, 0, 0, .2)
+			}
+
+			.swal2-image {
+				max-width: 100%;
+				margin: 1.25em auto
+			}
+
+			.swal2-close {
+				position: absolute;
+				z-index: 2;
+				top: 0;
+				right: 0;
+				align-items: center;
+				justify-content: center;
+				width: 1.2em;
+				height: 1.2em;
+				padding: 0;
+				overflow: hidden;
+				transition: color .1s ease-out;
+				border: none;
+				border-radius: 0;
+				background: 0 0;
+				color: #ccc;
+				font-family: serif;
+				font-size: 2.5em;
+				line-height: 1.2;
+				cursor: pointer
+			}
+
+			.swal2-close:hover {
+				transform: none;
+				background: 0 0;
+				color: #f27474
+			}
+
+			.swal2-close::-moz-focus-inner {
+				border: 0
+			}
+
+			.swal2-content {
+				z-index: 1;
+				justify-content: center;
+				margin: 0;
+				padding: 0 1.6em;
+				color: #545454;
+				font-size: 1.125em;
+				font-weight: 400;
+				line-height: normal;
+				text-align: center;
+				word-wrap: break-word
+			}
+
+			.swal2-checkbox,
+			.swal2-file,
+			.swal2-input,
+			.swal2-radio,
+			.swal2-select,
+			.swal2-textarea {
+				margin: 1em auto
+			}
+
+			.swal2-file,
+			.swal2-input,
+			.swal2-textarea {
+				box-sizing: border-box;
+				width: 100%;
+				transition: border-color .3s, box-shadow .3s;
+				border: 1px solid #d9d9d9;
+				border-radius: .1875em;
+				background: inherit;
+				box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06);
+				color: inherit;
+				font-size: 1.125em
+			}
+
+			.swal2-file.swal2-inputerror,
+			.swal2-input.swal2-inputerror,
+			.swal2-textarea.swal2-inputerror {
+				border-color: #f27474 !important;
+				box-shadow: 0 0 2px #f27474 !important
+			}
+
+			.swal2-file:focus,
+			.swal2-input:focus,
+			.swal2-textarea:focus {
+				border: 1px solid #b4dbed;
+				outline: 0;
+				box-shadow: 0 0 3px #c4e6f5
+			}
+
+			.swal2-file::-moz-placeholder,
+			.swal2-input::-moz-placeholder,
+			.swal2-textarea::-moz-placeholder {
+				color: #ccc
+			}
+
+			.swal2-file:-ms-input-placeholder,
+			.swal2-input:-ms-input-placeholder,
+			.swal2-textarea:-ms-input-placeholder {
+				color: #ccc
+			}
+
+			.swal2-file::-ms-input-placeholder,
+			.swal2-input::-ms-input-placeholder,
+			.swal2-textarea::-ms-input-placeholder {
+				color: #ccc
+			}
+
+			.swal2-file::placeholder,
+			.swal2-input::placeholder,
+			.swal2-textarea::placeholder {
+				color: #ccc
+			}
+
+			.swal2-range {
+				margin: 1em auto;
+				background: #fff
+			}
+
+			.swal2-range input {
+				width: 80%
+			}
+
+			.swal2-range output {
+				width: 20%;
+				color: inherit;
+				font-weight: 600;
+				text-align: center
+			}
+
+			.swal2-range input,
+			.swal2-range output {
+				height: 2.625em;
+				padding: 0;
+				font-size: 1.125em;
+				line-height: 2.625em
+			}
+
+			.swal2-input {
+				height: 2.625em;
+				padding: 0 .75em
+			}
+
+			.swal2-input[type=number] {
+				max-width: 10em
+			}
+
+			.swal2-file {
+				background: inherit;
+				font-size: 1.125em
+			}
+
+			.swal2-textarea {
+				height: 6.75em;
+				padding: .75em
+			}
+
+			.swal2-select {
+				min-width: 50%;
+				max-width: 100%;
+				padding: .375em .625em;
+				background: inherit;
+				color: inherit;
+				font-size: 1.125em
+			}
+
+			.swal2-checkbox,
+			.swal2-radio {
+				align-items: center;
+				justify-content: center;
+				background: #fff;
+				color: inherit
+			}
+
+			.swal2-checkbox label,
+			.swal2-radio label {
+				margin: 0 .6em;
+				font-size: 1.125em
+			}
+
+			.swal2-checkbox input,
+			.swal2-radio input {
+				margin: 0 .4em
+			}
+
+			.swal2-validation-message {
+				display: none;
+				align-items: center;
+				justify-content: center;
+				padding: .625em;
+				overflow: hidden;
+				background: #f0f0f0;
+				color: #666;
+				font-size: 1em;
+				font-weight: 300
+			}
+
+			.swal2-validation-message::before {
+				content: "!";
+				display: inline-block;
+				width: 1.5em;
+				min-width: 1.5em;
+				height: 1.5em;
+				margin: 0 .625em;
+				border-radius: 50%;
+				background-color: #f27474;
+				color: #fff;
+				font-weight: 600;
+				line-height: 1.5em;
+				text-align: center
+			}
+
+			.swal2-icon {
+				position: relative;
+				box-sizing: content-box;
+				justify-content: center;
+				width: 5em;
+				height: 5em;
+				margin: 1.25em auto 1.875em;
+				border: .25em solid transparent;
+				border-radius: 50%;
+				font-family: inherit;
+				line-height: 5em;
+				cursor: default;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none
+			}
+
+			.swal2-icon .swal2-icon-content {
+				display: flex;
+				align-items: center;
+				font-size: 3.75em
+			}
+
+			.swal2-icon.swal2-error {
+				border-color: #f27474;
+				color: #f27474
+			}
+
+			.swal2-icon.swal2-error .swal2-x-mark {
+				position: relative;
+				flex-grow: 1
+			}
+
+			.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+				display: block;
+				position: absolute;
+				top: 2.3125em;
+				width: 2.9375em;
+				height: .3125em;
+				border-radius: .125em;
+				background-color: #f27474
+			}
+
+			.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+				left: 1.0625em;
+				transform: rotate(45deg)
+			}
+
+			.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+				right: 1em;
+				transform: rotate(-45deg)
+			}
+
+			.swal2-icon.swal2-error.swal2-icon-show {
+				-webkit-animation: swal2-animate-error-icon .5s;
+				animation: swal2-animate-error-icon .5s
+			}
+
+			.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark {
+				-webkit-animation: swal2-animate-error-x-mark .5s;
+				animation: swal2-animate-error-x-mark .5s
+			}
+
+			.swal2-icon.swal2-warning {
+				border-color: #facea8;
+				color: #f8bb86
+			}
+
+			.swal2-icon.swal2-info {
+				border-color: #9de0f6;
+				color: #3fc3ee
+			}
+
+			.swal2-icon.swal2-question {
+				border-color: #c9dae1;
+				color: #87adbd
+			}
+
+			.swal2-icon.swal2-success {
+				border-color: #a5dc86;
+				color: #a5dc86
+			}
+
+			.swal2-icon.swal2-success [class^=swal2-success-circular-line] {
+				position: absolute;
+				width: 3.75em;
+				height: 7.5em;
+				transform: rotate(45deg);
+				border-radius: 50%
+			}
+
+			.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left] {
+				top: -.4375em;
+				left: -2.0635em;
+				transform: rotate(-45deg);
+				transform-origin: 3.75em 3.75em;
+				border-radius: 7.5em 0 0 7.5em
+			}
+
+			.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right] {
+				top: -.6875em;
+				left: 1.875em;
+				transform: rotate(-45deg);
+				transform-origin: 0 3.75em;
+				border-radius: 0 7.5em 7.5em 0
+			}
+
+			.swal2-icon.swal2-success .swal2-success-ring {
+				position: absolute;
+				z-index: 2;
+				top: -.25em;
+				left: -.25em;
+				box-sizing: content-box;
+				width: 100%;
+				height: 100%;
+				border: .25em solid rgba(165, 220, 134, .3);
+				border-radius: 50%
+			}
+
+			.swal2-icon.swal2-success .swal2-success-fix {
+				position: absolute;
+				z-index: 1;
+				top: .5em;
+				left: 1.625em;
+				width: .4375em;
+				height: 5.625em;
+				transform: rotate(-45deg)
+			}
+
+			.swal2-icon.swal2-success [class^=swal2-success-line] {
+				display: block;
+				position: absolute;
+				z-index: 2;
+				height: .3125em;
+				border-radius: .125em;
+				background-color: #a5dc86
+			}
+
+			.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {
+				top: 2.875em;
+				left: .8125em;
+				width: 1.5625em;
+				transform: rotate(45deg)
+			}
+
+			.swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+				top: 2.375em;
+				right: .5em;
+				width: 2.9375em;
+				transform: rotate(-45deg)
+			}
+
+			.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip {
+				-webkit-animation: swal2-animate-success-line-tip .75s;
+				animation: swal2-animate-success-line-tip .75s
+			}
+
+			.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long {
+				-webkit-animation: swal2-animate-success-line-long .75s;
+				animation: swal2-animate-success-line-long .75s
+			}
+
+			.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right {
+				-webkit-animation: swal2-rotate-success-circular-line 4.25s ease-in;
+				animation: swal2-rotate-success-circular-line 4.25s ease-in
+			}
+
+			.swal2-progress-steps {
+				align-items: center;
+				margin: 0 0 1.25em;
+				padding: 0;
+				background: inherit;
+				font-weight: 600
+			}
+
+			.swal2-progress-steps li {
+				display: inline-block;
+				position: relative
+			}
+
+			.swal2-progress-steps .swal2-progress-step {
+				z-index: 20;
+				width: 2em;
+				height: 2em;
+				border-radius: 2em;
+				background: #3085d6;
+				color: #fff;
+				line-height: 2em;
+				text-align: center
+			}
+
+			.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {
+				background: #3085d6
+			}
+
+			.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step {
+				background: #add8e6;
+				color: #fff
+			}
+
+			.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line {
+				background: #add8e6
+			}
+
+			.swal2-progress-steps .swal2-progress-step-line {
+				z-index: 10;
+				width: 2.5em;
+				height: .4em;
+				margin: 0 -1px;
+				background: #3085d6
+			}
+
+			[class^=swal2] {
+				-webkit-tap-highlight-color: transparent
+			}
+
+			.swal2-show {
+				-webkit-animation: swal2-show .3s;
+				animation: swal2-show .3s
+			}
+
+			.swal2-hide {
+				-webkit-animation: swal2-hide .15s forwards;
+				animation: swal2-hide .15s forwards
+			}
+
+			.swal2-noanimation {
+				transition: none
+			}
+
+			.swal2-scrollbar-measure {
+				position: absolute;
+				top: -9999px;
+				width: 50px;
+				height: 50px;
+				overflow: scroll
+			}
+
+			.swal2-rtl .swal2-close {
+				right: auto;
+				left: 0
+			}
+
+			.swal2-rtl .swal2-timer-progress-bar {
+				right: 0;
+				left: auto
+			}
+
+			@supports (-ms-accelerator:true) {
+				.swal2-range input {
+					width: 100% !important
+				}
+
+				.swal2-range output {
+					display: none
+				}
+			}
+
+			@media all and (-ms-high-contrast:none),
+			(-ms-high-contrast:active) {
+				.swal2-range input {
+					width: 100% !important
+				}
+
+				.swal2-range output {
+					display: none
+				}
+			}
+
+			@-moz-document url-prefix() {
+				.swal2-close:focus {
+					outline: 2px solid rgba(50, 100, 150, .4)
+				}
+			}
+
+			@-webkit-keyframes swal2-toast-show {
+				0% {
+					transform: translateY(-.625em) rotateZ(2deg)
+				}
+
+				33% {
+					transform: translateY(0) rotateZ(-2deg)
+				}
+
+				66% {
+					transform: translateY(.3125em) rotateZ(2deg)
+				}
+
+				100% {
+					transform: translateY(0) rotateZ(0)
+				}
+			}
+
+			@keyframes swal2-toast-show {
+				0% {
+					transform: translateY(-.625em) rotateZ(2deg)
+				}
+
+				33% {
+					transform: translateY(0) rotateZ(-2deg)
+				}
+
+				66% {
+					transform: translateY(.3125em) rotateZ(2deg)
+				}
+
+				100% {
+					transform: translateY(0) rotateZ(0)
+				}
+			}
+
+			@-webkit-keyframes swal2-toast-hide {
+				100% {
+					transform: rotateZ(1deg);
+					opacity: 0
+				}
+			}
+
+			@keyframes swal2-toast-hide {
+				100% {
+					transform: rotateZ(1deg);
+					opacity: 0
+				}
+			}
+
+			@-webkit-keyframes swal2-toast-animate-success-line-tip {
+				0% {
+					top: .5625em;
+					left: .0625em;
+					width: 0
+				}
+
+				54% {
+					top: .125em;
+					left: .125em;
+					width: 0
+				}
+
+				70% {
+					top: .625em;
+					left: -.25em;
+					width: 1.625em
+				}
+
+				84% {
+					top: 1.0625em;
+					left: .75em;
+					width: .5em
+				}
+
+				100% {
+					top: 1.125em;
+					left: .1875em;
+					width: .75em
+				}
+			}
+
+			@keyframes swal2-toast-animate-success-line-tip {
+				0% {
+					top: .5625em;
+					left: .0625em;
+					width: 0
+				}
+
+				54% {
+					top: .125em;
+					left: .125em;
+					width: 0
+				}
+
+				70% {
+					top: .625em;
+					left: -.25em;
+					width: 1.625em
+				}
+
+				84% {
+					top: 1.0625em;
+					left: .75em;
+					width: .5em
+				}
+
+				100% {
+					top: 1.125em;
+					left: .1875em;
+					width: .75em
+				}
+			}
+
+			@-webkit-keyframes swal2-toast-animate-success-line-long {
+				0% {
+					top: 1.625em;
+					right: 1.375em;
+					width: 0
+				}
+
+				65% {
+					top: 1.25em;
+					right: .9375em;
+					width: 0
+				}
+
+				84% {
+					top: .9375em;
+					right: 0;
+					width: 1.125em
+				}
+
+				100% {
+					top: .9375em;
+					right: .1875em;
+					width: 1.375em
+				}
+			}
+
+			@keyframes swal2-toast-animate-success-line-long {
+				0% {
+					top: 1.625em;
+					right: 1.375em;
+					width: 0
+				}
+
+				65% {
+					top: 1.25em;
+					right: .9375em;
+					width: 0
+				}
+
+				84% {
+					top: .9375em;
+					right: 0;
+					width: 1.125em
+				}
+
+				100% {
+					top: .9375em;
+					right: .1875em;
+					width: 1.375em
+				}
+			}
+
+			@-webkit-keyframes swal2-show {
+				0% {
+					transform: scale(.7)
+				}
+
+				45% {
+					transform: scale(1.05)
+				}
+
+				80% {
+					transform: scale(.95)
+				}
+
+				100% {
+					transform: scale(1)
+				}
+			}
+
+			@keyframes swal2-show {
+				0% {
+					transform: scale(.7)
+				}
+
+				45% {
+					transform: scale(1.05)
+				}
+
+				80% {
+					transform: scale(.95)
+				}
+
+				100% {
+					transform: scale(1)
+				}
+			}
+
+			@-webkit-keyframes swal2-hide {
+				0% {
+					transform: scale(1);
+					opacity: 1
+				}
+
+				100% {
+					transform: scale(.5);
+					opacity: 0
+				}
+			}
+
+			@keyframes swal2-hide {
+				0% {
+					transform: scale(1);
+					opacity: 1
+				}
+
+				100% {
+					transform: scale(.5);
+					opacity: 0
+				}
+			}
+
+			@-webkit-keyframes swal2-animate-success-line-tip {
+				0% {
+					top: 1.1875em;
+					left: .0625em;
+					width: 0
+				}
+
+				54% {
+					top: 1.0625em;
+					left: .125em;
+					width: 0
+				}
+
+				70% {
+					top: 2.1875em;
+					left: -.375em;
+					width: 3.125em
+				}
+
+				84% {
+					top: 3em;
+					left: 1.3125em;
+					width: 1.0625em
+				}
+
+				100% {
+					top: 2.8125em;
+					left: .8125em;
+					width: 1.5625em
+				}
+			}
+
+			@keyframes swal2-animate-success-line-tip {
+				0% {
+					top: 1.1875em;
+					left: .0625em;
+					width: 0
+				}
+
+				54% {
+					top: 1.0625em;
+					left: .125em;
+					width: 0
+				}
+
+				70% {
+					top: 2.1875em;
+					left: -.375em;
+					width: 3.125em
+				}
+
+				84% {
+					top: 3em;
+					left: 1.3125em;
+					width: 1.0625em
+				}
+
+				100% {
+					top: 2.8125em;
+					left: .8125em;
+					width: 1.5625em
+				}
+			}
+
+			@-webkit-keyframes swal2-animate-success-line-long {
+				0% {
+					top: 3.375em;
+					right: 2.875em;
+					width: 0
+				}
+
+				65% {
+					top: 3.375em;
+					right: 2.875em;
+					width: 0
+				}
+
+				84% {
+					top: 2.1875em;
+					right: 0;
+					width: 3.4375em
+				}
+
+				100% {
+					top: 2.375em;
+					right: .5em;
+					width: 2.9375em
+				}
+			}
+
+			@keyframes swal2-animate-success-line-long {
+				0% {
+					top: 3.375em;
+					right: 2.875em;
+					width: 0
+				}
+
+				65% {
+					top: 3.375em;
+					right: 2.875em;
+					width: 0
+				}
+
+				84% {
+					top: 2.1875em;
+					right: 0;
+					width: 3.4375em
+				}
+
+				100% {
+					top: 2.375em;
+					right: .5em;
+					width: 2.9375em
+				}
+			}
+
+			@-webkit-keyframes swal2-rotate-success-circular-line {
+				0% {
+					transform: rotate(-45deg)
+				}
+
+				5% {
+					transform: rotate(-45deg)
+				}
+
+				12% {
+					transform: rotate(-405deg)
+				}
+
+				100% {
+					transform: rotate(-405deg)
+				}
+			}
+
+			@keyframes swal2-rotate-success-circular-line {
+				0% {
+					transform: rotate(-45deg)
+				}
+
+				5% {
+					transform: rotate(-45deg)
+				}
+
+				12% {
+					transform: rotate(-405deg)
+				}
+
+				100% {
+					transform: rotate(-405deg)
+				}
+			}
+
+			@-webkit-keyframes swal2-animate-error-x-mark {
+				0% {
+					margin-top: 1.625em;
+					transform: scale(.4);
+					opacity: 0
+				}
+
+				50% {
+					margin-top: 1.625em;
+					transform: scale(.4);
+					opacity: 0
+				}
+
+				80% {
+					margin-top: -.375em;
+					transform: scale(1.15)
+				}
+
+				100% {
+					margin-top: 0;
+					transform: scale(1);
+					opacity: 1
+				}
+			}
+
+			@keyframes swal2-animate-error-x-mark {
+				0% {
+					margin-top: 1.625em;
+					transform: scale(.4);
+					opacity: 0
+				}
+
+				50% {
+					margin-top: 1.625em;
+					transform: scale(.4);
+					opacity: 0
+				}
+
+				80% {
+					margin-top: -.375em;
+					transform: scale(1.15)
+				}
+
+				100% {
+					margin-top: 0;
+					transform: scale(1);
+					opacity: 1
+				}
+			}
+
+			@-webkit-keyframes swal2-animate-error-icon {
+				0% {
+					transform: rotateX(100deg);
+					opacity: 0
+				}
+
+				100% {
+					transform: rotateX(0);
+					opacity: 1
+				}
+			}
+
+			@keyframes swal2-animate-error-icon {
+				0% {
+					transform: rotateX(100deg);
+					opacity: 0
+				}
+
+				100% {
+					transform: rotateX(0);
+					opacity: 1
+				}
+			}
+
+			@-webkit-keyframes swal2-rotate-loading {
+				0% {
+					transform: rotate(0)
+				}
+
+				100% {
+					transform: rotate(360deg)
+				}
+			}
+
+			@keyframes swal2-rotate-loading {
+				0% {
+					transform: rotate(0)
+				}
+
+				100% {
+					transform: rotate(360deg)
+				}
+			}
+
+			body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+				overflow: hidden
+			}
+
+			body.swal2-height-auto {
+				height: auto !important
+			}
+
+			body.swal2-no-backdrop .swal2-container {
+				top: auto;
+				right: auto;
+				bottom: auto;
+				left: auto;
+				max-width: calc(100% - .625em * 2);
+				background-color: transparent !important
+			}
+
+			body.swal2-no-backdrop .swal2-container>.swal2-modal {
+				box-shadow: 0 0 10px rgba(0, 0, 0, .4)
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-top {
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%)
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-top-left,
+			body.swal2-no-backdrop .swal2-container.swal2-top-start {
+				top: 0;
+				left: 0
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-top-end,
+			body.swal2-no-backdrop .swal2-container.swal2-top-right {
+				top: 0;
+				right: 0
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-center {
 				top: 50%;
-				width: 950px;
-				height: 475px;
-				background-image: url(top.png);
-				background-size: 100% 100%;
-				margin: 0 auto;
-				margin-top: 450px;
-				margin-bottom: 30px;
+				left: 50%;
+				transform: translate(-50%, -50%)
 			}
-			.div-img2{
-				position: relative;
+
+			body.swal2-no-backdrop .swal2-container.swal2-center-left,
+			body.swal2-no-backdrop .swal2-container.swal2-center-start {
 				top: 50%;
-				width: 950px;
-				height: 475px;
-				background-image: url(bottom.png);
-				background-size: 100% 100%;
-				margin: 0 auto;
+				left: 0;
+				transform: translateY(-50%)
 			}
-			
+
+			body.swal2-no-backdrop .swal2-container.swal2-center-end,
+			body.swal2-no-backdrop .swal2-container.swal2-center-right {
+				top: 50%;
+				right: 0;
+				transform: translateY(-50%)
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-bottom {
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%)
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-bottom-left,
+			body.swal2-no-backdrop .swal2-container.swal2-bottom-start {
+				bottom: 0;
+				left: 0
+			}
+
+			body.swal2-no-backdrop .swal2-container.swal2-bottom-end,
+			body.swal2-no-backdrop .swal2-container.swal2-bottom-right {
+				right: 0;
+				bottom: 0
+			}
+
+			@media print {
+				body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+					overflow-y: scroll !important
+				}
+
+				body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true] {
+					display: none
+				}
+
+				body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
+					position: static !important
+				}
+			}
+
+			body.swal2-toast-shown .swal2-container {
+				background-color: transparent
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-top {
+				top: 0;
+				right: auto;
+				bottom: auto;
+				left: 50%;
+				transform: translateX(-50%)
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-top-end,
+			body.swal2-toast-shown .swal2-container.swal2-top-right {
+				top: 0;
+				right: 0;
+				bottom: auto;
+				left: auto
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-top-left,
+			body.swal2-toast-shown .swal2-container.swal2-top-start {
+				top: 0;
+				right: auto;
+				bottom: auto;
+				left: 0
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-center-left,
+			body.swal2-toast-shown .swal2-container.swal2-center-start {
+				top: 50%;
+				right: auto;
+				bottom: auto;
+				left: 0;
+				transform: translateY(-50%)
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-center {
+				top: 50%;
+				right: auto;
+				bottom: auto;
+				left: 50%;
+				transform: translate(-50%, -50%)
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-center-end,
+			body.swal2-toast-shown .swal2-container.swal2-center-right {
+				top: 50%;
+				right: 0;
+				bottom: auto;
+				left: auto;
+				transform: translateY(-50%)
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-bottom-left,
+			body.swal2-toast-shown .swal2-container.swal2-bottom-start {
+				top: auto;
+				right: auto;
+				bottom: 0;
+				left: 0
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-bottom {
+				top: auto;
+				right: auto;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%)
+			}
+
+			body.swal2-toast-shown .swal2-container.swal2-bottom-end,
+			body.swal2-toast-shown .swal2-container.swal2-bottom-right {
+				top: auto;
+				right: 0;
+				bottom: 0;
+				left: auto
+			}
+
+			body.swal2-toast-column .swal2-toast {
+				flex-direction: column;
+				align-items: stretch
+			}
+
+			body.swal2-toast-column .swal2-toast .swal2-actions {
+				flex: 1;
+				align-self: stretch;
+				height: 2.2em;
+				margin-top: .3125em
+			}
+
+			body.swal2-toast-column .swal2-toast .swal2-loading {
+				justify-content: center
+			}
+
+			body.swal2-toast-column .swal2-toast .swal2-input {
+				height: 2em;
+				margin: .3125em auto;
+				font-size: 1em
+			}
+
+			body.swal2-toast-column .swal2-toast .swal2-validation-message {
+				font-size: 1em
+			}
 		</style>
+
+
+		<script src="qrcode.min.js"></script>
+		<link href="down.css" rel="stylesheet">
+
+		<style>
+			.clipboard_button {
+				cursor: pointer
+			}
+
+			.ios-index .box {
+				padding: 10vw 0 13.333vw 0 !important;
+			}
+
+			#lottie {
+
+				width: 50px;
+
+				height: 50px;
+
+				overflow: hidden;
+
+				transform: translate3d(0, 0, 0);
+
+				text-align: center;
+
+				opacity: 1;
+
+				margin: 0 auto
+			}
+
+			#loading {}
+		</style>
+		<link href="chunk-vendors.css" rel="stylesheet">
+		<link href="app.css" rel="stylesheet">
+		<script type="text/javascript" src="load.json"></script>
+		<script type="text/javascript" src="lottie.min.js"></script>
+		<script src="vue.min.js"></script>
+		<!-- 引入组件库 -->
+
+		<script>
+			function generateUUID() {
+				var uuid = cacheGet("UUID");
+				if (uuid !== false) {
+					return uuid;
+				} else {
+					var d = new Date().getTime();
+					var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+						var r = (d + Math.random() * 16) % 16 | 0;
+						d = Math.floor(d / 16);
+						return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+					});
+					cacheSet("UUID", uuid, 300);
+					return uuid;
+				}
+			};
+
+			/**
+			 * 设置 localStoryage
+			 * @param key 键
+			 * @param value 值
+			 * @param expire 过期时间(秒) 缓存最大时间请勿超过 forceTime 否则每次都会清空数据 (未设置请忽略)
+			 * @return bool true
+			 */
+			function cacheSet(key, value = '', expire = 0) {
+				// 当前时间戳
+				var nowTime = Math.ceil(Date.now() / 1000);
+				// 设置数据
+				localStorage.setItem(key, JSON.stringify(value))
+				// 判断是否有过期时间
+				if (expire > 0) {
+					// 设置过期时间
+					localStorage.setItem(key + '_expire', (nowTime + parseInt(expire)))
+				} else {
+					// 设置过期时间
+					localStorage.setItem(key + '_expire', 0)
+				}
+				return true;
+			}
+
+			/**
+			 * 读取 localStoryage
+			 * @param key
+			 * @return bool|originData false|originData
+			 */
+			function cacheGet(key) {
+				// 当前时间戳
+				var nowTime = Math.ceil(Date.now() / 1000);
+				// 获取键时间戳
+				var rawCacheDataExpire = localStorage.getItem(key + '_expire');
+				var cacheDataExpire = parseInt(rawCacheDataExpire);
+
+				// 强制过期时间 为0时忽略 用于解决缓存时间与本地时间差距过大(例本地更改了计算机时间)
+				var forceTime = 3600;
+				// 判断用户是否删除了过期时间 判断是否设置了过期时间 判断是否超过过期时间 判断当前计算机时间与设置的过期时间差距是否过大
+				if ((rawCacheDataExpire === null) || (cacheDataExpire > 0) && ((nowTime > cacheDataExpire) || (forceTime > 0 &&
+						Math.abs(cacheDataExpire - nowTime) > forceTime))) {
+					// 删除过期key
+					localStorage.removeItem(key)
+					// 删除过期时间
+					localStorage.removeItem(key + '_expire')
+					return false;
+				}
+
+				// 获取数据
+				var cacheData = JSON.parse(localStorage.getItem(key));
+
+				if (cacheData === null || cacheData === false) {
+					return false;
+				}
+				// 返回数据
+				return cacheData;
+			}
+
+
+			function formatting(time) {
+				var time = new Date(time);
+				var y = time.getFullYear();
+				var m = time.getMonth() + 1;
+				var d = time.getDate();
+				var h = time.getHours();
+				var mm = time.getMinutes();
+				var s = time.getSeconds();
+				return y + '-' + this.repair0(m) + '-' + this.repair0(d) + ' ' + this.repair0(h) + ':' + this.repair0(mm) + ':' +
+					this.repair0(s);
+			}
+
+			function repair0(m) {
+				return m < 10 ? '0' + m : m;
+			}
+
+			function codeInfoCopy() {
+				var Url2 = document.getElementById("tflink").innerText;
+				if (Url2.length > 0) {
+					var oInput = document.createElement('input');
+					oInput.value = Url2;
+					document.body.appendChild(oInput);
+					oInput.select(); // 选择对象
+					document.execCommand("Copy"); // 执行浏览器复制命令
+					oInput.className = 'oInput';
+					oInput.style.display = 'none';
+					alert("复制成功");
+				}
+			}
+
+
+			var checkAuthCodeInfo = function() {
+
+				Swal.fire({
+					title: '授权码',
+					text: '输入需要查询的授权码',
+					input: 'text',
+					showCancelButton: true,
+					confirmButtonText: '确定',
+					showLoaderOnConfirm: true,
+				}).then((result) => {
+					if (result.isConfirmed) {
+						var code = result.value;
+						if (code) {
+							const data = JSON.stringify({
+								"isAjax": true,
+							});
+							const xhr = new XMLHttpRequest();
+							xhr.withCredentials = true;
+							xhr.addEventListener("readystatechange", function() {
+								if (this.readyState === this.DONE) {
+									if (this.responseText) {
+										var data = xhr.responseText;
+										var jsonResponse = JSON.parse(data);
+										if (jsonResponse.code < 0) {
+											alert(jsonResponse.message)
+										} else {
+											var infoJson = jsonResponse.data;
+											var infoObj = JSON.parse(infoJson);
+											var useStatusStr = '';
+											if (infoObj.useStatus === 1) {
+												useStatusStr = "已使用";
+											} else {
+												useStatusStr = "未使用";
+											}
+											var linktext = '';
+											if (infoObj.tflink) {
+												linktext = infoObj.tflink;
+											}
+											let updateStr = infoObj.updated;
+											let updateTime = new Date(updateStr).getTime();
+											let updateFormatTime = formatting(updateTime);
+											Swal.fire({
+												title: infoObj.code,
+												html: '<h4>使用状态:</h4><p>' + useStatusStr + '</p>' +
+													'<h4>使用时间:</h4><p>' + updateFormatTime + '</p>' +
+													'<h4>TF链接:</h4><p id="tflink">' + linktext +
+													'</p>',
+												footer: "<a href='#abc' onclick='return codeInfoCopy();' class='copy mr-2'" +
+													">" +
+													"复制TF链接" +
+													"</a>"
+											})
+										}
+
+
+									} else {
+										alert("请求失败！")
+									}
+								}
+							});
+							xhr.open("GET", "/tf/checkAuthCodeInfo/" + code);
+							xhr.setRequestHeader("cache-control", "no-cache");
+							xhr.setRequestHeader("Content-Type", "application/json");
+							xhr.send(data);
+
+						}
+
+					}
+				});
+
+			}
+
+
+			var getState = function() {
+				Swal.fire({
+					title: '提示',
+					text: '请确认已安装TestFlight,若未进行第一步安装将无法内测应用',
+					type: 'warning',
+					confirmButtonText: '已安装',
+					showCancelButton: true,
+					cancelButtonText: '安装TestFlight'
+				}).then((results) => {
+					if (results.isConfirmed) {
+						getTFLink();
+					} else if (results.dismiss === Swal.DismissReason.cancel) {
+						window.location = "https://itunes.apple.com/app/id899247664";
+					}
+				})
+				return false;
+			}
+
+			function getTFLink() {
+
+				if (1 === 1) { //开启授权码模式
+
+					Swal.fire({
+						title: '授权码',
+						text: '请输入授权码',
+						input: 'text',
+						showCancelButton: true,
+						confirmButtonText: '确定',
+						showLoaderOnConfirm: true,
+					}).then((result) => {
+						if (result.isConfirmed) {
+							var code = result.value;
+							if (code) {
+								var uuid = generateUUID();
+								const data = JSON.stringify({
+									"isAjax": true,
+									"uuid": uuid
+								});
+								const xhr = new XMLHttpRequest();
+								xhr.withCredentials = true;
+								xhr.addEventListener("readystatechange", function() {
+									if (this.readyState === this.DONE) {
+										if (this.responseText) {
+											var data = xhr.responseText;
+											var jsonResponse = JSON.parse(data);
+											if (jsonResponse.code < 0) {
+												alert(jsonResponse.message)
+											} else {
+												startIntervalLoop();
+												check(true, code);
+											}
+										} else {
+											alert("请求失败！")
+										}
+									}
+								});
+								xhr.open("POST", "/tf/checkAuthCode/" + code);
+								xhr.setRequestHeader("cache-control", "no-cache");
+								xhr.setRequestHeader("Content-Type", "application/json");
+								xhr.send(data);
+							}
+						}
+					});
+				} else { //没有开启授权码模式
+					startIntervalLoop();
+					check(true, "");
+				}
+			}
+		</script>
+
 	</head>
-	<body class="body">
-		<div class="table">
-			<div class="div-img1" onclick="window.open('https://itunes.apple.com/app/id899247664')">
-			</div>
-			<div class="div-img2" onclick="window.open('https://www.ios528.com/h5/#/pages/mobilediy/index/index?key=wkqm')">
+
+	<body class="" style="padding-right: 0px;">
+		<a id="link" href="https://tfweb.xyz/tf/merge/taikong#"></a>
+
+		<div id="app">
+			<div class="ios-index"><a href="https://tfweb.xyz/tf/merge/taikong"></a>
+				<div id="loading" style="display: none;">
+					<div class="loadtoast "
+						style="background: rgba(0, 0, 0, 0.8); border-radius: 0.5rem; color: rgb(255, 255, 255); padding: 0.5rem; font-size: 1rem; line-height: 1.5; position: fixed; z-index: 11000; width: auto; left: 50%; margin-top: 0px; top: 50%; text-align: center; transform: translateX(-50%);">
+						<div id="lottie"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120"
+								height="120" preserveAspectRatio="xMidYMid meet"
+								style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);">
+								<defs>
+									<clippath id="__lottie_element_2">
+										<rect width="120" height="120" x="0" y="0"></rect>
+									</clippath>
+								</defs>
+								<g clip-path="url(#__lottie_element_2)">
+									<g transform="matrix(-0.07253716140985489,-0.05327627435326576,0.05327627435326576,-0.07253716140985489,58.94649887084961,61.9952278137207)"
+										opacity="1" style="display: block;">
+										<g opacity="1" transform="matrix(1,0,0,1,-9.17199993133545,22.827999114990234)">
+											<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0"
+												stroke="rgb(255,255,255)" stroke-opacity="1"
+												stroke-width="61.00285882352883"
+												d=" M-122.2770004272461,147.81199645996094 C-89.08100128173828,175.3040008544922 -46.470001220703125,191.8280029296875 0,191.8280029296875 C105.94400024414062,191.8280029296875 191.8280029296875,105.94400024414062 191.8280029296875,0 C191.8280029296875,-56.91699981689453 167.0399932861328,-108.04399871826172 127.66999816894531,-143.1750030517578">
+											</path>
+										</g>
+									</g>
+									<g transform="matrix(0.1692533642053604,0.12431129813194275,-0.12431129813194275,0.1692533642053604,65.21817016601562,58.10446548461914)"
+										opacity="1" style="display: block;">
+										<g opacity="1" transform="matrix(1,0,0,1,-9.17199993133545,22.827999114990234)">
+											<path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0"
+												stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="37"
+												d=" M0,-191.8280029296875 C-105.94400024414062,-191.8280029296875 -191.8280029296875,-105.94400024414062 -191.8280029296875,0 C-191.8280029296875,105.94400024414062 -105.94400024414062,191.8280029296875 0,191.8280029296875 C39.979000091552734,191.8280029296875 77.10199737548828,179.59800720214844 107.83100128173828,158.6750030517578">
+											</path>
+										</g>
+									</g>
+								</g>
+							</svg></div>
+						<div id="lottieMsg" style="white-space: nowrap; padding: 5px 10px;">
+							正在准备链接，请稍等 </div>
+					</div>
+				</div>
+				<div class="box">
+					
+					<div class="item AClass">
+						<div class="setup">
+							第一步 </div>
+						<div class="body">
+							<div class="text">
+								<p>
+									首先安装【TestFlight】然后返回本页 </p>
+								<p>
+									如已安装请直接操作第二步 </p>
+							</div>
+							<div class="button"><a href="https://itunes.apple.com/app/id899247664" target="_blank">
+									<div class="ico"><img src="itunes.png" alt=""></div>
+									<div class="tip">
+										安装 TestFlight </div>
+								</a></div>
+						</div>
+					</div>
+					<div class="item BClass">
+						<div class="setup">
+							第二步 </div>
+						<div class="body">
+							<div class="text">
+								<p>
+									输入邀请码下载 【太空人】
+								</p>
+								<p>
+									请勿在意名字下载完成后和官方一样
+
+								</p>
+							</div>
+							<div class="button"><a href="https://www.ios528.com/h5/#/pages/mobilediy/index/index?key=wkqm">
+									<div class="ico"><img src="167x167bb.png" alt=""
+											style="border-radius: 6px;"></div>
+									<div class="tip">
+										安装 太空人
+									</div>
+								</a></div>
+							
+								</a></div>
+							<div class="tutorial">
+								<div class="text"><a>
+										<font color="#ff0000"> 注意：第一步安装完成后再去安装第二步</font>
+									</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-<!-- 尚洪网络技术支持 -->
+		<div class="van-toast van-toast--middle van-toast--loading" style="z-index: 2004; display: none;">
+			<div class="van-loading van-loading--circular van-toast__loading">
+				<span class="van-loading__spinner van-loading__spinner--circular">
+					<svg viewBox="25 25 50 50" class="van-loading__circular">
+						<circle cx="50" cy="50" r="20" fill="none">
+						</circle>
+					</svg>
+				</span>
+			</div>
+
+		</div>
+		<div class="pc-box">
+			<div class="pc-logo">
+				<img src="167x167bb.png">
+			</div>
+			<p></p>
+			<div id="app_code" class="code" title="https://tfweb.xyz/tf/merge/taikong">
+				<canvas width="200" height="200" style="display: none;"></canvas><img
+					src="data:image/png;base64,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"
+					style="display: block;">
+			</div>
+			<div class="info">请使用相机扫码下载</div>
+		</div>
+		<script>
+			new QRCode(document.getElementById("app_code"), {
+				width: 200,
+				height: 200
+			}).makeCode(location.href);
+			var app = new Vue({
+				el: '#app',
+				data: {
+					fullscreenLoading: false,
+					src: '',
+					lock: false,
+					show: false
+				},
+				mounted() {
+					var params = {
+						container: document.getElementById('lottie'),
+						renderer: 'svg',
+						loop: true,
+						autoplay: true,
+						animationData: animationData
+					};
+					var anim;
+					anim = lottie.loadAnimation(params)
+				}
+			});
+
+			function updateGettingLinkStatus() {
+				const data = JSON.stringify({
+					"code": "Npt1FY2NB"
+				});
+				const xhr = new XMLHttpRequest();
+				xhr.withCredentials = true;
+				xhr.addEventListener("readystatechange", function() {
+					if (this.readyState === this.DONE) {
+						if (this.responseText) {
+							var data = xhr.responseText;
+							var jsonResponse = JSON.parse(data);
+							if (jsonResponse.code < 0) {
+								alert(jsonResponse.message)
+							} else {
+								//更改获取链接状态成功
+							}
+						} else {
+							alert("请求失败！")
+						}
+					}
+				});
+				xhr.open("POST", "/tf/updateGettingLinkStatus");
+				xhr.setRequestHeader("cache-control", "no-cache");
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.send(data);
+			}
+
+			var second = 0;
+			var loop;
+
+			function startIntervalLoop() {
+				clearMsg();
+				second = 0;
+				//每隔一秒执行一次
+				loop = setInterval(function() {
+					countTime()
+				}, 1000);
+			}
+
+
+			function clearMsg() {
+				var msg = "正在准备链接，请稍等";
+				var msgElement = document.getElementById("lottieMsg");
+				msgElement.innerText = msg;
+			}
+
+
+			function countTime() {
+				second++;
+				var msg = "正在准备链接，请稍等";
+				msg = msg + "(" + second + "s)";
+				var msgElement = document.getElementById("lottieMsg");
+				msgElement.innerText = msg;
+				if (second >= 60) {
+					//隐藏动画
+					app.lock = false
+					app.show = false
+					clearInterval(loop);
+					clearTimeout(timer);
+					second = 0;
+					setTimeout(() => {
+						updateGettingLinkStatus();
+						var msg = "获取TF链接超时,请点击关闭后等待5分钟重试!";
+						alert(msg);
+					}, 200);
+				}
+			}
+
+
+			var timer;
+
+			function check(lock = true, authCode = "") {
+				if (app.lock && lock) {
+					return;
+				}
+				app.show = true
+				app.lock = true
+				var uuid = generateUUID();
+
+				const data = JSON.stringify({
+					"isAjax": true,
+					"authcode": authCode,
+					"uuid": uuid,
+					"mergeAppCode": "taikong"
+				});
+
+				//大于设置的下载时间间隔
+				var downloadInterval = 0;
+				if (second >= downloadInterval) {
+					//清除定时调用check
+					clearTimeout(timer);
+					const xhr = new XMLHttpRequest();
+					xhr.withCredentials = true;
+					xhr.addEventListener("readystatechange", function() {
+						if (this.readyState === this.DONE) {
+							if (this.responseText) {
+								clearInterval(loop);
+								var data = xhr.responseText;
+								var jsonResponse = JSON.parse(data);
+								if (jsonResponse.code < 0) {
+									app.lock = false
+									app.show = false
+									setTimeout(() => {
+										var msg = jsonResponse.message;
+										alert(msg);
+									}, 200);
+
+								} else {
+									app.lock = false
+									app.show = false
+									//跳转TestFlight
+									var link = jsonResponse.message;
+									goTestFlightApp(link);
+								}
+							} else {
+								//循环check
+								app.show = true
+								//在这多写一行清除代码，不然每次事件触发都会多一个延时器，延时器之间互相干扰
+								clearTimeout(timer);
+								timer = setTimeout(() => {
+									check(false, authCode)
+								}, 1000);
+							}
+						}
+					});
+					xhr.open("POST", "/tf/loading/Npt1FY2NB");
+					xhr.setRequestHeader("cache-control", "no-cache");
+					xhr.setRequestHeader("Content-Type", "application/json");
+					xhr.send(data);
+
+				} else {
+
+					//循环check
+					app.show = true
+					clearTimeout(timer);
+					timer = setTimeout(() => {
+						check(false, authCode)
+					}, 1000);
+
+				}
+
+			}
+
+			function goTestFlightApp(link) {
+				var obj = document.getElementById('link');
+				obj.href = link;
+				obj.click();
+			}
+
+			if (navigator.platform === "MacIntel") {
+				const iPad = !!(navigator.userAgent.match(/(iPad)/) ||
+					(navigator.platform === "MacIntel" && typeof navigator.standalone !== "undefined"));
+				if (!iPad) {
+					$('.pc-box').show();
+					$('#app').hide();
+				}
+			}
+		</script>
         <script type="text/javascript">
         var browser = {
             versions: function() {
@@ -107,6 +2307,4 @@
             loadStyleText(cssText);
         }
     </script>
- </body></html>  
-	</body>
-</html>
+ </body></html>
